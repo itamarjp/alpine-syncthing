@@ -10,6 +10,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENV PUID=${PUID} \
+    HOME=/var/syncthing \
     PGID=${PGID} \
     STHOMEDIR=/var/syncthing/config \
     STGUIADDRESS=0.0.0.0:8384 \

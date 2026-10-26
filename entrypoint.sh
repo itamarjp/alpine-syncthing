@@ -10,6 +10,7 @@ if [ "$(id -u)" = "0" ]; then
     adduser -D -H -h /var/syncthing -u "$PUID" -G syncthing syncthing 2>/dev/null || true
   mkdir -p "$STHOMEDIR"
   chown "$PUID:$PGID" /var/syncthing "$STHOMEDIR"
+  export HOME=/var/syncthing
   exec su-exec "$PUID:$PGID" "$@"
 fi
 
