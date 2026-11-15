@@ -1,0 +1,29 @@
+version: 2
+
+updates:
+  # Imagem base (alpine:edge é rolling; mantido para avisar se a tag mudar).
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+      time: "20:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "container"
+    commit-message:
+      prefix: "chore(deps)"
+
+  # Mantém atualizadas as Actions de build e publicação no GHCR.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci(deps)"
